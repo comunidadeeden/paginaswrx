@@ -515,7 +515,7 @@ function makePurchaseAnalyticsContext(readConsent, isTest, notifyReady) {
 
 /* SOURCE: raiox03.js */
 const RAIOX_CONFIG = {
-  checkoutUrl: "https://lastlink.com/p/CC503A9CD/checkout-payment/",
+  checkoutUrl: "https://pay.kiwify.com.br/d8hsofK",
   leadWebhookUrl: window.RX_CONFIG.webhookUrl,
   source: "quiz_raiox03",
   workshopDateText: "Terça e quarta, às 20h · ao vivo",
@@ -1516,7 +1516,7 @@ function renderResult() {
   document.querySelector("#checkout-button").addEventListener("click", () => {
     state.checkoutClicked = true;
     if (completionConfirmed) RX.saveCheckpoint(state);
-    RX.emit("rx_checkout_click", {element_id:"checkout-button",link_domain:"lastlink.com",currency:"BRL",value:37});
+    RX.emit("rx_checkout_click", {element_id:"checkout-button",link_domain:"pay.kiwify.com.br",currency:"BRL",value:37});
   });
 }
 
@@ -1549,7 +1549,9 @@ function buildCheckoutUrl() {
 
     const phone = splitBrazilPhoneForCheckout(lead.phone);
     if (phone) {
-      if (url.hostname === "lastlink.com") {
+      if (url.hostname === "pay.kiwify.com.br") {
+        url.searchParams.set("phone", phone.areaCode + phone.number);
+      } else if (url.hostname === "lastlink.com") {
         url.searchParams.set("phone", "+55" + phone.areaCode + phone.number);
       } else {
         url.searchParams.set("phoneac", phone.areaCode);
@@ -1645,7 +1647,7 @@ try { performance.mark("rx03:runtime-ready"); } catch (_) {}
   const isCheckoutUrl = value => {
     try {
       const host = new URL(value, location.href).hostname.toLowerCase();
-      return host === "lastlink.com" || host === "pay.hotmart.com" || host === "hub.la" || host.endsWith(".hub.la");
+      return host === "pay.kiwify.com.br" || host === "lastlink.com" || host === "pay.hotmart.com" || host === "hub.la" || host.endsWith(".hub.la");
     } catch (_) {
       return false;
     }
