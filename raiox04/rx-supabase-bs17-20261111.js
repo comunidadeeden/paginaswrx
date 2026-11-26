@@ -11,7 +11,7 @@ window.RX_CONFIG = {
   correlateCheckout: true, // Acrescenta marcador opaco ao sck, sem dados pessoais.
   heartbeatSeconds: 120, // Somente com medição opcional autorizada.
   webhookUrl: "https://nklqcamhkwqictdmictb.supabase.co/functions/v1/raiox04-collect",
-  gtmId: "GTM-MZBZ9HCS",
+  gtmId: "",
   testMode: false, // Produção. Use ?rx_test=1 para homologar sem gravar leads reais.
   source: "quiz_raiox04",
   launch: "raiox04_2026_10", // Contrato direto do Supabase. Não alterar sem atualizar a função de ingestão.
@@ -398,6 +398,7 @@ function makePurchaseAnalyticsContext(readConsent, isTest, notifyReady) {
     }
   }
   function ensureMetaBase(){
+    return; // Pixel da Meta antigo (866754926148360) desativado
     if(cfg.testMode||!consent.advertising||w.__rx26PixelBase)return;
     if(!w.RXBoot.isReady()){w.RXBoot.afterPaint(ensureMetaBase);return;}
     w.__rx26PixelBase=true;
@@ -1318,6 +1319,6 @@ render();
 
 window.RXBoot.afterPaint(function(){
 
-if (!window.RX_CONFIG?.testMode) {(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MZBZ9HCS');}
+if (!window.RX_CONFIG?.testMode) {/* GTM antigo (GTM-MZBZ9HCS) removido */}
 
 });

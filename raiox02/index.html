@@ -2432,10 +2432,6 @@ body.rx02-opening .opening-editorial .opening-subtitle{font-size:11px;line-heigh
 </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZBZ9HCS"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <header class="rx02-header"><div class="brand"><span class="brand-mark" aria-hidden="true">RX</span><span>RAIO-X <b>HUMANO</b><small>WORKSHOP COM BRUNO SIMPLÍCIO</small></span></div><span class="rx02-header-note">Um olhar mais atento começa aqui.</span></header>
 <div class="rx02-layout"><aside class="rx02-guide"><span>SEU RAIO-X</span><h1>Um novo olhar.<br><em>O que você ainda<br>não percebe?</em></h1><p>Responda no seu ritmo e descubra seu ponto de partida para conhecer a proposta do Workshop Raio-X Humano.</p><ol><li><i>01</i> Seu contexto</li><li><i>02</i> Seu olhar hoje</li><li><i>03</i> Seu próximo passo</li></ol><div class="rx02-guide-note">Sem respostas certas ou erradas.</div></aside><main class="app-shell">
     <header class="topbar" aria-label="Cabeçalho">
@@ -2462,7 +2458,7 @@ window.RX_CONFIG = {
   correlateCheckout: true, // Acrescenta marcador opaco ao sck, sem dados pessoais.
   heartbeatSeconds: 120, // Intervalo reduzido para aliviar gravações repetidas.
   webhookUrl: "https://nklqcamhkwqictdmictb.supabase.co/functions/v1/raiox02-collect",
-  gtmId: "GTM-MZBZ9HCS",
+  gtmId: "",
   testMode: false, // Produção. Use ?rx_test=1 para homologar sem gravar leads reais.
   source: "quiz_raiox02",
   launch: "raiox02_2026_09", // Contrato direto do Supabase. Não alterar sem atualizar a função de ingestão.
@@ -2848,6 +2844,7 @@ function makePurchaseAnalyticsContext(readConsent, isTest, notifyReady) {
     }
   }
   function ensureMetaBase(){
+    return; // Pixel da Meta antigo (866754926148360) desativado
     if(cfg.testMode||!consent.advertising||w.__rx26PixelBase)return;
     w.__rx26PixelBase=true;
     const pixel='866754926148360';
@@ -2959,7 +2956,7 @@ function makePurchaseAnalyticsContext(readConsent, isTest, notifyReady) {
 })(window,document);
 </script>
 <script data-rx-source="gtm-bootstrap.js">
-if (!window.RX_CONFIG?.testMode) {(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MZBZ9HCS');}
+if (!window.RX_CONFIG?.testMode) {/* GTM antigo (GTM-MZBZ9HCS) removido */}
 </script>
 <script data-rx-source="raiox02.js">
 const RAIOX_CONFIG = {
